@@ -1,18 +1,14 @@
-import { ShoppingCart, Search, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { ShoppingCart, Search, Menu, X } from 'lucide-react';
 import { Shoe } from '../lib/icons';
 
-interface HeaderProps {
-  onSearchChange?: (query: string) => void;
-}
-
-export function Header({ onSearchChange }: HeaderProps) {
+export function Header({ onSearchChange }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-    onSearchChange?.(e.target.value);
+    onSearchChange && onSearchChange(e.target.value);
   };
 
   return (
@@ -22,12 +18,14 @@ export function Header({ onSearchChange }: HeaderProps) {
           <Shoe className="w-8 h-8 text-lime-400" />
           <span className="text-2xl font-bold text-white tracking-tight">STRIDE</span>
         </div>
+
         <nav className="hidden md:flex items-center gap-8">
           <a href="#" className="text-sm text-zinc-300 hover:text-lime-400 transition-colors">Men</a>
           <a href="#" className="text-sm text-zinc-300 hover:text-lime-400 transition-colors">Women</a>
           <a href="#" className="text-sm text-zinc-300 hover:text-lime-400 transition-colors">Collections</a>
           <a href="#" className="text-sm text-zinc-300 hover:text-lime-400 transition-colors">Sale</a>
         </nav>
+
         <div className="hidden md:block relative w-64">
           <input
             type="text"
@@ -52,6 +50,7 @@ export function Header({ onSearchChange }: HeaderProps) {
           </button>
         </div>
       </div>
+
       {isMenuOpen && (
         <div className="md:hidden border-t border-zinc-800 bg-zinc-900 p-4 space-y-4">
           <div className="relative">

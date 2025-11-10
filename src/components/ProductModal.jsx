@@ -1,16 +1,10 @@
-import { X, Heart, ChevronLeft, ChevronRight, Package, Truck } from 'lucide-react';
-import { Product } from '../lib/supabase';
 import { useState } from 'react';
+import { X, Heart, ChevronLeft, ChevronRight, Package, Truck } from 'lucide-react';
 
-interface ProductModalProps {
-  product: Product;
-  onClose: () => void;
-}
-
-export function ProductModal({ product, onClose }: ProductModalProps) {
+export function ProductModal({ product, onClose }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [product.image_url, product.image_url, product.image_url];
 
+  const images = [product.image_url, product.image_url, product.image_url];
   const hasDiscount = product.original_price && product.original_price > product.price;
 
   const nextImage = () => {
@@ -25,6 +19,8 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-zinc-900 rounded-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
         <div className="grid md:grid-cols-2 gap-8 p-8">
+          
+          {/* IMAGES */}
           <div className="space-y-4">
             <div className="relative aspect-square bg-zinc-800 rounded-lg overflow-hidden">
               <img
@@ -63,6 +59,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
             </div>
           </div>
 
+          {/* PRODUCT DETAILS */}
           <div className="flex flex-col">
             <button
               onClick={onClose}
@@ -98,12 +95,10 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
               </h2>
 
               <div className="flex items-baseline gap-3 mb-6">
-                <span className="text-4xl font-bold text-white">
-                  ${product.price.toLocaleString()}
-                </span>
+                <span className="text-4xl font-bold text-white">${product.price}</span>
                 {hasDiscount && (
                   <span className="text-xl text-zinc-500 line-through">
-                    ${product.original_price?.toLocaleString()}
+                    ${product.original_price}
                   </span>
                 )}
               </div>
@@ -113,14 +108,14 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                   Size chart
                 </button>
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <select className="bg-zinc-800 text-white px-4 py-3 rounded-lg border border-zinc-700 focus:border-lime-400 focus:outline-none">
+                  <select className="bg-zinc-800 text-white px-4 py-3 rounded-lg border border-zinc-700">
                     <option>Size</option>
                     <option>US 6</option>
                     <option>US 7</option>
                     <option>US 8</option>
                     <option>US 9</option>
                   </select>
-                  <select className="bg-zinc-800 text-white px-4 py-3 rounded-lg border border-zinc-700 focus:border-lime-400 focus:outline-none">
+                  <select className="bg-zinc-800 text-white px-4 py-3 rounded-lg border border-zinc-700">
                     <option>Color</option>
                     <option>White/Black</option>
                     <option>All White</option>
@@ -138,7 +133,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                       <span className="text-white font-medium">To order</span>
                     </div>
                     <div className="text-2xl font-bold text-white">
-                      ${product.preorder_price?.toLocaleString()}
+                      ${product.preorder_price}
                     </div>
                   </div>
                   <div className="bg-zinc-800 border-2 border-lime-400 rounded-lg p-4">
@@ -147,20 +142,9 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                       <span className="text-white font-medium">In stock</span>
                     </div>
                     <div className="text-2xl font-bold text-white">
-                      ${product.stock_price?.toLocaleString()}
+                      ${product.stock_price}
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-sm text-zinc-300">
-                  <Package className="w-4 h-4" />
-                  <span>Order delivery point — free of charge</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-zinc-300">
-                  <Truck className="w-4 h-4" />
-                  <span>Delivery tomorrow or later</span>
                 </div>
               </div>
 
@@ -172,6 +156,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                   Add to cart
                 </button>
               </div>
+
             </div>
           </div>
         </div>

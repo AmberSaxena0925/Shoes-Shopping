@@ -1,34 +1,34 @@
-import { Zap, Heart, TrendingUp, Award } from 'lucide-react';
+import { Zap, Heart, TrendingUp, Award } from "lucide-react";
 
 export function CategoriesSection() {
   const categories = [
     {
-      name: 'Running',
+      name: "Running",
       icon: Zap,
-      description: 'Performance shoes for speed and endurance',
-      image: 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg',
-      color: 'lime',
+      description: "Performance shoes for speed and endurance",
+      image: "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg",
+      color: "lime",
     },
     {
-      name: 'Casual',
+      name: "Casual",
       icon: Heart,
-      description: 'Comfortable everyday sneakers',
-      image: 'https://images.pexels.com/photos/1280064/pexels-photo-1280064.jpeg',
-      color: 'blue',
+      description: "Comfortable everyday sneakers",
+      image: "https://images.pexels.com/photos/1280064/pexels-photo-1280064.jpeg",
+      color: "blue",
     },
     {
-      name: 'Basketball',
+      name: "Basketball",
       icon: TrendingUp,
-      description: 'Court-ready professional shoes',
-      image: 'https://images.pexels.com/photos/2529147/pexels-photo-2529147.jpeg',
-      color: 'purple',
+      description: "Court-ready professional shoes",
+      image: "https://images.pexels.com/photos/2529147/pexels-photo-2529147.jpeg",
+      color: "purple",
     },
     {
-      name: 'Luxury',
+      name: "Luxury",
       icon: Award,
-      description: 'Premium designer collections',
-      image: 'https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg',
-      color: 'amber',
+      description: "Premium designer collections",
+      image: "https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg",
+      color: "amber",
     },
   ];
 
@@ -57,6 +57,7 @@ export function CategoriesSection() {
                   alt={category.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
                 <div className="absolute inset-0 flex flex-col justify-between p-6">

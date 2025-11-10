@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Product, supabase } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 import { ProductCard } from './ProductCard';
 import { Loader2 } from 'lucide-react';
 
-interface ProductGridProps {
-  onProductClick: (product: Product) => void;
-}
-
-export function ProductGrid({ onProductClick }: ProductGridProps) {
-  const [products, setProducts] = useState<Product[]>([]);
+export function ProductGrid({ onProductClick }) {
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -50,7 +46,9 @@ export function ProductGrid({ onProductClick }: ProductGridProps) {
             <span>/</span>
             <span className="text-white">Sneakers</span>
           </div>
+
           <h1 className="text-4xl font-bold text-white mb-2">Women's Sneakers</h1>
+
           <p className="text-zinc-400">
             Discover our collection of premium sneakers
           </p>

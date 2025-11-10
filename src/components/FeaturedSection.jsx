@@ -1,14 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Product, supabase } from '../lib/supabase';
-import { ProductCard } from './ProductCard';
-import { Loader2 } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase"; // ✅ Remove Product type import
+import { ProductCard } from "./ProductCard";
+import { Loader2 } from "lucide-react";
 
-interface FeaturedSectionProps {
-  onProductClick: (product: Product) => void;
-}
-
-export function FeaturedSection({ onProductClick }: FeaturedSectionProps) {
-  const [products, setProducts] = useState<Product[]>([]);
+export function FeaturedSection({ onProductClick }) {
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,15 +14,15 @@ export function FeaturedSection({ onProductClick }: FeaturedSectionProps) {
   async function loadProducts() {
     try {
       const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .order('review_count', { ascending: false })
+        .from("products")
+        .select("*")
+        .order("review_count", { ascending: false })
         .limit(6);
 
       if (error) throw error;
       setProducts(data || []);
     } catch (error) {
-      console.error('Error loading products:', error);
+      console.error("Error loading products:", error);
     } finally {
       setLoading(false);
     }
@@ -35,6 +31,7 @@ export function FeaturedSection({ onProductClick }: FeaturedSectionProps) {
   return (
     <section className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4">
+
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-lime-400/10 border border-lime-400/30 rounded-full text-lime-400 text-sm font-medium mb-4">
             Featured Picks
