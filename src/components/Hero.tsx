@@ -8,7 +8,7 @@ export function Hero() {
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-lime-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 h-screen flex items-center">
+      <div className="relative h-screen max-w-7xl mx-auto px-4 h-screen flex items-center">
         <div className="grid md:grid-cols-2 gap-8 items-center w-full">
           <div className="space-y-8">
             <div>
